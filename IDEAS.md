@@ -30,7 +30,8 @@ It is also a real-world test of nostr-post's theming and plugin system.
 | Gig calendar | NIP-52 events (31922/31923) and calendars (31924). Agenda and month views, RSVP, `.ics` import/export. Base: `examples/gigs` in nostr-post. |
 | Event discussion | Comments under each event. |
 | Concert reports | Reports linked to the event. |
-| Reviews | Gig reviews (per band performance) and album reviews. |
+| Reviews | Gig reviews (per band performance) and album reviews. Can also be external review cards (see "Data intake"). |
+| Long articles | Long-form posts (NIP-23, kind 30023) through nostr-post: interviews, scene reports, essays, zine issues. |
 | Band wiki | Wiki pages (kind 30818), including a logo field for posters. |
 | Album wiki | Wiki pages linked to bands. |
 | Media | `plugin-embed`: YouTube, Spotify, SoundCloud, Vimeo, Bandcamp, click to load. |
@@ -60,6 +61,26 @@ Venues get their own theme on the same token system.
   - Serve the script from a stable versioned URL.
 - Submission flow: a band or promoter proposes a gig, the venue approves, and it appears in the venue calendar and the main feed.
 - Venue profile: address, capacity, map. The nostr-post roadmap already plans moving venue code.
+
+## Data intake
+
+Several ways to feed content in, side by side:
+
+- **`.ics` import:** existing in nostr-post, including Facebook event `.ics` exports.
+- **RSS/Atom feeds:** subscribe to feeds from venues, Gancio instances, labels, blogs and review sites.
+- **AI sniffing:** paste a URL (or point at a page) and let AI extract structured data: event, band, album or review. The user checks the result before publishing. nostr-post's gigs example already has AI-assisted adding to build on.
+
+### External review cards
+
+For reviews published elsewhere, don't copy the text. Publish a card with:
+
+- Short summary (written fresh, not copied).
+- Score, normalized to one scale, with the original scale kept (e.g. 8/10, 4/5).
+- Reviewer and publication name.
+- Link to the full external review.
+- Links to the album or band wiki page.
+
+This fills album pages with reviews while respecting copyright and sending readers to the original.
 
 ## Seeding with public data
 
@@ -141,5 +162,6 @@ Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine loo
 4. Expose it as the venue-calendar web component.
 5. Importer for Gancio feeds.
 6. Poster package.
-7. Reviews, reports, wiki views.
-8. Multilanguage.
+7. Reviews, reports, wiki views, long articles.
+8. RSS intake, AI sniffing and external review cards.
+9. Multilanguage.
