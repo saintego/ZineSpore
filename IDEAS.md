@@ -36,7 +36,7 @@ It is also a real-world test of nostr-post's theming and plugin system.
 | Album wiki | Wiki pages linked to bands. |
 | Media | `plugin-embed`: YouTube, Spotify, SoundCloud, Vimeo, Bandcamp, click to load. |
 | Poster creator | New package. Pulls band logos from wiki pages, fills a template with event data, exports PNG/SVG. |
-| Languages | Multilanguage support later. |
+| Languages | Translations of UI, articles, reviews and venue texts. See "Multilanguage". |
 
 ## Themes
 
@@ -81,6 +81,63 @@ For reviews published elsewhere, don't copy the text. Publish a card with:
 - Links to the album or band wiki page.
 
 This fills album pages with reviews while respecting copyright and sending readers to the original.
+
+## Multilanguage
+
+Goal: translations for articles, reviews and venue descriptions, without paying for a translation API. Should live in nostr-post so every app on it gets it.
+
+### Principles
+
+- The **original** is the source of truth and keeps its language tag.
+- A **translation is its own event**, linked to the original. It can come from the author, a community translator, or a person who corrected a machine draft.
+- Reader sees their language if a translation exists, otherwise the original. Always show a label (original, by author, by translator, machine) and a "show original" toggle.
+- Not translated: band names, album and song titles, venue names, genre tags.
+
+### Data model (proposal)
+
+I don't know of a standard Nostr convention for translations, so this is a proposal to check against current NIPs before building:
+
+- Long article translation: a separate kind 30023 event, with `["l", "<lang>", "ISO-639-1"]` for its language and a reference tag pointing to the original, e.g. `["a", "30023:<pubkey>:<d>", "", "translation-of"]`.
+- Same pattern for reviews and wiki pages (kind 30818).
+- Wiki pages: one page per language, linked together.
+- **Venue descriptions** and other manifest texts (NIP-78): localized fields in the manifest, e.g. `description: { en: "…", cs: "…" }`, with a fallback order. This fits nostr-post's field-level manifest design.
+
+### Picking which translation to show
+
+1. Author's own translation.
+2. Translator the author or venue has endorsed (allowlist, same idea as the publisher allowlist).
+3. Other community translations.
+4. On-device machine translation, not published.
+
+### Free machine translation
+
+Run it in the reader's browser, so there is no server and no per-request cost.
+
+- **Chrome/Edge Translator API:** on-device, free, works offline once the language pack is downloaded. Chrome 138+ and Edge 148+, desktop only. Not on mobile, Firefox or Safari. Supports Czech, German, English, Spanish, French and many more. The first use downloads a model and needs a user click.
+- **Bundled fallback:** an opt-in in-browser model (e.g. Bergamot/Firefox-style or Opus-MT through Transformers.js). Works on more browsers, but the user downloads tens of MB per language pair and phones will be slow.
+- **Last resort:** a link to the browser's own page translation.
+- **Self-hosted LibreTranslate** is free software but needs a server, so only if we run one later.
+- Machine translations are cached locally and **not published** by default, to avoid flooding relays with low-quality copies.
+
+Limits: slang, scene jargon and band names will translate badly. Treat machine output as a draft.
+
+### Correction flow
+
+1. Reader clicks "translate", gets a machine draft on their device.
+2. "Improve and publish" opens it in an editor.
+3. They sign and publish it as a translation event, credited to them.
+
+This turns machine drafts into good manual translations over time, for free.
+
+### UI strings
+
+Separate from content. Key/value JSON catalogs in the repo, one file per language, contributed by pull request. Language picked from browser settings, with a manual switch.
+
+### Open questions
+
+- How to detect the original language when the author didn't tag it (the Language Detector API is built into Chrome, otherwise a small bundled detector).
+- Which languages first. Suggest English plus the scene's main local ones (Czech and German as a start).
+- Whether the importer should translate imported events. Probably not: keep the original text and link to the source.
 
 ## Seeding with public data
 
@@ -164,4 +221,4 @@ Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine loo
 6. Poster package.
 7. Reviews, reports, wiki views, long articles.
 8. RSS intake, AI sniffing and external review cards.
-9. Multilanguage.
+9. Multilanguage: UI string catalogs first, then translation events and the on-device translate button, then localized venue fields.
