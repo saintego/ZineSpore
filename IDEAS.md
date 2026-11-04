@@ -139,6 +139,37 @@ Separate from content. Key/value JSON catalogs in the repo, one file per languag
 - Which languages first. Suggest English plus the scene's main local ones (Czech and German as a start).
 - Whether the importer should translate imported events. Probably not: keep the original text and link to the source.
 
+## Deploy your own (nsite)
+
+Anyone can run their own ZineSpore: a venue, a collective, a city scene. Each one is a separate nsite on the same data.
+
+- **Template repo / fork:** one config file holds the instance settings: name, theme, default language, relays, calendar and publisher allowlist, which venues to feature.
+- **Publish in one step:** a build script, plus a GitHub Action that publishes to nsite on push. nostr-post already has an nsite preview build in CI on PR #15, so this can build on it. I haven't checked the current nsite tooling, so confirm that first.
+- **Instances share data, not servers:** events, wikis and reviews live on Nostr, so every instance shows the same underlying content through its own filter and look. A new scene starts with content, not an empty site.
+- **Own domain optional:** an nsite can also be mirrored to a normal domain.
+- **Doubles as the venue story:** a venue can choose the embed (see Venue embed) or a full site of its own.
+
+## About / manifesto page
+
+A page that explains why it is built this way, in zine language and not tech language. It also helps sell it to bands and venues who don't care about protocols.
+
+Ideas for the content:
+
+- **The scene's memory shouldn't belong to one company.** Gig pages, flyers, reviews and band histories disappear when a platform changes its rules, buys a competitor, or deletes an account.
+- **Flyers on walls, not feeds.** No algorithm decides which gig you see. No ads.
+- **Photocopy logic.** Zines spread because anyone can copy and pass them on. Here, every copy of a post sits on someone else's relay and can't be pulled back by one switch.
+- **Your key is your name.** Bands and venues own their identity and can take it anywhere.
+- **Censorship.** One company or government can't remove the page for everyone. Be honest about it: individual relays can still refuse content, and a lost key can't be reset. Say it plainly. Don't claim it can't be censored.
+- **No crypto talk.** Nostr is not a blockchain and there is no coin. Say that on the page, since much of the audience distrusts crypto.
+
+Look and format:
+
+- Made as a zine page: photocopied collage, typewriter text, cut-out headlines, hand-drawn arrows, a stamped "spore" logo.
+- Short, loud sections instead of long text. One A4-style spread per idea.
+- Printable as a real PDF zine that venues can hand out or put up.
+- Translated like everything else (see Multilanguage).
+- Also a "How to join" page: get a key, back it up, what happens if you lose it, how a band claims its page.
+
 ## Seeding with public data
 
 Importing public gig listings makes the site look full from day one.
@@ -222,3 +253,5 @@ Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine loo
 7. Reviews, reports, wiki views, long articles.
 8. RSS intake, AI sniffing and external review cards.
 9. Multilanguage: UI string catalogs first, then translation events and the on-device translate button, then localized venue fields.
+10. nsite deploy template and the instance config file.
+11. About / manifesto page and "How to join", in all themes.
