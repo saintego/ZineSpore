@@ -32,6 +32,7 @@ It is also a real-world test of nostr-post's theming and plugin system.
 | Concert reports | Reports linked to the event. |
 | Reviews | Gig reviews (per band performance) and album reviews. Can also be external review cards (see "Data intake"). |
 | Personal lists | Watched bands, liked bands, songs and styles, with suggestions built from them. See "Personal lists and suggestions". |
+| Music services | Optional links to MusicBrainz, Bandcamp, Spotify, Last.fm and similar. Fills the site while Nostr content is still thin. See "Music service integrations". |
 | Long articles | Long-form posts (NIP-23, kind 30023) through nostr-post: interviews, scene reports, essays, zine issues. |
 | Band wiki | Wiki pages (kind 30818), including a logo field for posters. |
 | Album wiki | Wiki pages linked to bands. |
@@ -121,6 +122,44 @@ nostr-post already supports lists (kinds 10003 and 30003). Nostr's list standard
 ### Data issue to solve first
 
 Genre tags are messy. Imported events carry free-form tags, e.g. `post-metal`, `atmospheric-black-metal`, `sludge`, sometimes duplicated. Matching and suggestions need a **style taxonomy**: canonical style wiki pages with aliases and parent genres (sludge is under doom, for example). Imported tags map to them; unknown tags stay as plain tags.
+
+## Music service integrations
+
+Goal: the site is useful even while Nostr content is empty, and readers can bring their listening taste in from services they already use. Everything is optional. Nothing needs an account.
+
+### Principles
+
+- **No keys of ours.** Anything that needs an API key uses the **reader's own key**. The key is stored locally and synced between that reader's devices through **evolustr** (local-first, encrypted sync). It is never published to Nostr and never sent to any server of ours.
+- **Order of preference:** sources with no key first, then user-key sources, then file imports.
+- **Only IDs and links go to Nostr,** not copied third-party data. Provider terms limit storing and redistributing their data, so cache it locally and publish only our own content (wiki text, reviews, links).
+- **Listening history stays on the device.** It feeds the local suggestions (see "Personal lists and suggestions") and nothing else.
+
+### Per service (checked November 2026, re-verify before building)
+
+| Service | What it gives | Access | Notes |
+|---|---|---|---|
+| **MusicBrainz** | Canonical band, album and track IDs (MBIDs), relations, and places/events | No key (I believe; needs a proper User-Agent and low request rate) | Use as the ID backbone for band and album wiki pages, and to seed stub pages. Check its data licence before bulk use. |
+| **ListenBrainz** | Open listening history and recommendations | Reader's token | Open alternative to Last.fm. I believe it also has a Last.fm-compatible API, so one code path may cover both. Verify. |
+| **Last.fm** | Similar artists, tags, a reader's top artists and recent plays | Free key for non-commercial use | Terms: credit and link back, cap on stored data (100 MB), commercial use needs an agreement. Reader's own key keeps us out of shared-key limits. Accepts MBIDs. |
+| **Spotify** | Reader's followed artists and saved tracks, embeds | Reader's own developer app | Heavily restricted for new apps: development mode allows few users, Premium required, search results capped, and related artists/recommendations/audio features closed to new apps. Extended access needs a large business. So only for power users. Embeds need no API. |
+| **Spotify data export** | Full streaming history | Reader requests their data export and loads the file locally | No API at all. Likely the best Spotify route for normal readers. |
+| **Bandcamp** | Listen and buy | Embed players and links only | No public fan API. Developer APIs are for labels and merch partners. The undocumented fan endpoints are fragile, so don't build on them. Existing `plugin-embed` covers players. |
+| **Discogs** (optional) | Releases, labels, credits | Reader's token | Useful for label and member relations. |
+
+### What the integrations feed
+
+- **Stub pages:** a band or album with no Nostr wiki page yet shows a read-only page built from MusicBrainz (name, albums, links). The first person to edit it publishes a real wiki page, which then takes over.
+- **External IDs on wiki pages:** MBID, Bandcamp URL, Spotify artist, Last.fm URL. These also let imported gigs match to bands.
+- **List import:** Last.fm or ListenBrainz top artists, a Spotify export or followed artists become watched/liked bands, matched through MBIDs. Reader reviews and approves before saving.
+- **Suggestions:** Last.fm "similar artists" and tag data as another signal next to shared styles and shared bills.
+- **Style taxonomy:** MusicBrainz and Last.fm tags help map messy genre tags to canonical styles.
+
+### Open questions
+
+- **Browser access (CORS):** some of these APIs may not allow calls from a web page. Bandcamp's doesn't, and I haven't checked the others. If a service blocks it, options are a small proxy the reader runs, or leaving that service out. That would conflict with "no servers", so test it first.
+- Whether to support Spotify's login flow at all, given how limited new apps are.
+- Matching quality: band names are ambiguous, so always match by MBID where possible and let the reader fix wrong matches.
+- Check each service's current terms before shipping, since Spotify changed its rules twice in two years.
 
 ## Multilanguage
 
@@ -294,5 +333,6 @@ Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine loo
 8. RSS intake, AI sniffing and external review cards.
 9. Multilanguage: UI string catalogs first, then translation events and the on-device translate button, then localized venue fields.
 10. Style taxonomy, personal lists and on-device suggestions (can start earlier, after the wiki views).
-11. nsite deploy template and the instance config file.
-12. About / manifesto page and "How to join", in all themes.
+11. Music service integrations: MusicBrainz stub pages first, then Last.fm/ListenBrainz and file imports, with keys synced through evolustr.
+12. nsite deploy template and the instance config file.
+13. About / manifesto page and "How to join", in all themes.
