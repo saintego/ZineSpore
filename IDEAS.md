@@ -31,6 +31,7 @@ It is also a real-world test of nostr-post's theming and plugin system.
 | Event discussion | Comments under each event. |
 | Concert reports | Reports linked to the event. |
 | Reviews | Gig reviews (per band performance) and album reviews. Can also be external review cards (see "Data intake"). |
+| Personal lists | Watched bands, liked bands, songs and styles, with suggestions built from them. See "Personal lists and suggestions". |
 | Long articles | Long-form posts (NIP-23, kind 30023) through nostr-post: interviews, scene reports, essays, zine issues. |
 | Band wiki | Wiki pages (kind 30818), including a logo field for posters. |
 | Album wiki | Wiki pages linked to bands. |
@@ -81,6 +82,45 @@ For reviews published elsewhere, don't copy the text. Publish a card with:
 - Links to the album or band wiki page.
 
 This fills album pages with reviews while respecting copyright and sending readers to the original.
+
+## Personal lists and suggestions
+
+Each reader keeps their own lists, and the site suggests gigs and music from them.
+
+### Lists
+
+- **Watched bands:** bands you want gig alerts for. Stored as a list of references to band wiki pages (or band npubs).
+- **Liked bands:** a separate, lighter list. Can also come from a "like" on a band page.
+- **Songs:** saved tracks, referenced from the album wiki page plus a title, or from an external link (Bandcamp, YouTube, etc.).
+- **Styles:** genres you follow, such as post-metal or shoegaze. Stored as hashtags.
+
+nostr-post already supports lists (kinds 10003 and 30003). Nostr's list standard (NIP-51) also has an interests list for hashtags, which I believe fits styles, but check the current NIP before relying on it.
+
+### Privacy
+
+- Taste is personal. Lists are **private by default**, encrypted inside the list event (NIP-51 allows private items), with an option to publish a list.
+- Public lists make nice profile pages ("my 10 favorite albums") and are what other readers can discover.
+
+### Suggestions
+
+- Computed **on the reader's device** from their lists and public Nostr data. No server, no tracking profile.
+- Every suggestion says why: "because you watch X" or "plays with a band you like".
+- Output:
+  - Upcoming gigs of watched bands, in the reader's city and within a chosen distance.
+  - Gigs in your city matching followed styles.
+  - Bands related to liked ones.
+  - New album pages, reviews and articles about bands on your lists.
+- Signals, from simple to harder:
+  1. Shared style tags.
+  2. Bands that shared a bill (found from calendar events).
+  3. Same label, member overlap, or "similar to" links on wiki pages.
+  4. Readers with overlapping public lists (opt-in only).
+- Alerts without an account: the watched-bands gig list as an `.ics` or RSS feed the reader subscribes to.
+- Cold start: pick a few styles and bands when joining, so the first screen isn't empty.
+
+### Data issue to solve first
+
+Genre tags are messy. Imported events carry free-form tags, e.g. `post-metal`, `atmospheric-black-metal`, `sludge`, sometimes duplicated. Matching and suggestions need a **style taxonomy**: canonical style wiki pages with aliases and parent genres (sludge is under doom, for example). Imported tags map to them; unknown tags stay as plain tags.
 
 ## Multilanguage
 
@@ -253,5 +293,6 @@ Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine loo
 7. Reviews, reports, wiki views, long articles.
 8. RSS intake, AI sniffing and external review cards.
 9. Multilanguage: UI string catalogs first, then translation events and the on-device translate button, then localized venue fields.
-10. nsite deploy template and the instance config file.
-11. About / manifesto page and "How to join", in all themes.
+10. Style taxonomy, personal lists and on-device suggestions (can start earlier, after the wiki views).
+11. nsite deploy template and the instance config file.
+12. About / manifesto page and "How to join", in all themes.
