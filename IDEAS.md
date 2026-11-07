@@ -299,6 +299,14 @@ Start with 1 and 2. Add web of trust once the scene is big enough.
 - **Raw-data panel:** author npub, kind, `d` tag, `naddr` (copyable), relays found on, all tags, raw JSON, signature. (Prototype already exists.)
 - **Source attribution:** show it when a source tag is present.
 
+## Inspiration
+
+Sites to look at for features, tone and look:
+
+- **[Freakscene](https://freakscene.diy/):** DIY community platform for finding local shows. Upcoming gigs across many scenes, band pages, scene map, wiki, forums and chat. Dark, irreverent look and playful copy, with a choice of styles.
+- **[marast.cz](https://marast.cz):** added by Jan. What to take from it still to be noted. The front page I could read looked like a video/info site, so check which part is the inspiration.
+- **[Basspistol Do](https://do.basspistol.org/)** (Gancio): plain, community-run gig listing with venue pages, flyers, tags, embeds and `.ics`. See the comparison below.
+
 ## Comparison: Gancio (e.g. Basspistol Do)
 
 | | Gancio | ZineSpore |
