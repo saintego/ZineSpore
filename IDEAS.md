@@ -293,6 +293,17 @@ Start from trusted sources and show only those. From strongest to weakest:
 
 Start with 1 and 2. Add web of trust once the scene is big enough.
 
+### Hashtags as the open door
+
+Besides trusted sources, anyone can opt in by adding a hashtag, e.g. `#zinespore`. In Nostr that is a `t` tag, which gig events and posts already use for genres.
+
+- **Discovery layer:** an author tags a post, event, review or article with `#zinespore` and it shows up, with no approval needed. Relays can query by tag, so this is cheap.
+- **Scene tags:** `#zinespore` plus local ones such as a city or country tag, so a post can reach one scene or all of them. Each instance config lists which tags it includes and excludes.
+- **Kinds covered:** calendar events, wiki pages, long articles, reviews and short notes. Importers add the tag too.
+- **Two tiers in the UI:** content from allowlisted publishers or curated calendars is shown normally. Content that only has the hashtag appears in a "new / unverified" view until someone trusted promotes it (adds it to a curated calendar or list).
+- **Weakness:** anyone can add a tag, so spam will use it. That's why it's the open door and the allowlist and curated calendars stay the trust layer. Mute lists and reports (NIP-56) apply on top.
+- **Convention:** lowercase tags, matched case-insensitively. Document the official tag on the "How to join" page.
+
 ## Fixes for nostr-post `examples/gigs`
 
 - **Timezone:** show times in the venue's timezone from `start_tzid`, with an optional "your time" label. Fall back to the city in `location` when the tag is missing.
