@@ -389,12 +389,32 @@ Issues: [nostr-post #328](https://github.com/saintego/nostr-post/issues/328), [n
 - **Raw-data panel:** author npub, kind, `d` tag, `naddr` (copyable), relays found on, all tags, raw JSON, signature. (Prototype already exists.)
 - **Source attribution:** show it when a source tag is present.
 
+## Venue map
+
+Issues: [#39](https://github.com/saintego/zinespore/issues/39), [#3](https://github.com/saintego/zinespore/issues/3), [#4](https://github.com/saintego/zinespore/issues/4), [#29](https://github.com/saintego/zinespore/issues/29); nostr-post [#177](https://github.com/saintego/nostr-post/issues/177), [#187](https://github.com/saintego/nostr-post/issues/187), [#118](https://github.com/saintego/nostr-post/issues/118)
+
+A map of venues and scene places, with extendable layers, modelled on the worldtrip.guide subculture map.
+
+- **What worldtrip.guide is:** a travel site with curated maps (specialty coffee, craft beer, absinthe, subculture venues and more). Its subculture map covers underground music venues, art galleries and alternative cultural spaces, with a guide per city (`?s=<city>`). Its page doesn't say how the data is stored, who can contribute, the licence, or whether there is an export or embed. The page preloads tiles from OpenFreeMap, which suggests those tiles, unconfirmed. To check before relying on it.
+- **Already in nostr-post:** the venue hub (venues as wiki entities with OSM IDs and `g` geohash tags, OSM search in the picker). `plugin-geo` handles place input; I found no map view.
+- **Idea:** the map reads venue pages from Nostr. Layers (rehearsal rooms, record shops, festivals and so on) are Nostr lists that a spore declares in its config. No API keys, open tiles.
+
+## Venue social sources
+
+Issues: [#40](https://github.com/saintego/zinespore/issues/40), [#38](https://github.com/saintego/zinespore/issues/38), [#13](https://github.com/saintego/zinespore/issues/13), [#20](https://github.com/saintego/zinespore/issues/20), [#22](https://github.com/saintego/zinespore/issues/22), [#34](https://github.com/saintego/zinespore/issues/34)
+
+The long-term wish: events created from the places venues already post, automatically or after review.
+
+- **Honest order of sources:** open feeds the venue publishes (website, RSS, `.ics`, Gancio, ActivityPub), then accounts the venue connects itself, then user-shared links and flyers read by AI, and last, scraping logged-in social pages, which we avoid. Platform terms and APIs are not checked yet.
+- **Principle:** review by default; automatic only for sources a venue connected itself; one event per gig across sources; always the source link, opt-out and claiming.
+
 ## Inspiration
 
 Sites to look at for features, tone and look:
 
 - **[Freakscene](https://freakscene.diy/):** DIY community platform for finding local shows. Upcoming gigs across many scenes, band pages, scene map, wiki, forums and chat. Dark, irreverent look and playful copy, with a choice of styles.
 - **[marast.cz](https://marast.cz):** added by Jan. What to take from it still to be noted. The front page I could read looked like a video/info site, so check which part is the inspiration.
+- **[worldtrip.guide](https://worldtrip.guide):** curated travel maps including a subculture map of underground venues and cultural spaces. Model for the venue map and city guides. See "Venue map".
 - **[Basspistol Do](https://do.basspistol.org/)** (Gancio): plain, community-run gig listing with venue pages, flyers, tags, embeds and `.ics`. See the comparison below.
 
 ## Comparison: Gancio (e.g. Basspistol Do)
