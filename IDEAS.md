@@ -93,7 +93,7 @@ Issues: [#3](https://github.com/saintego/zinespore/issues/3), [#4](https://githu
 
 ## Data intake
 
-Issues: [#13](https://github.com/saintego/zinespore/issues/13), [#20](https://github.com/saintego/zinespore/issues/20), [#9](https://github.com/saintego/zinespore/issues/9)
+Issues: [#13](https://github.com/saintego/zinespore/issues/13), [#38](https://github.com/saintego/zinespore/issues/38), [#20](https://github.com/saintego/zinespore/issues/20), [#9](https://github.com/saintego/zinespore/issues/9)
 
 Several ways to feed content in, side by side:
 
@@ -418,7 +418,7 @@ Checked November 11, 2026.
 
 - PR #15 (calendar events) is merged, so the calendar, RSVP, `.ics` and event time zone display are done.
 - Still open and relevant: `askClaude` untested against the real API ([nostr-post #119](https://github.com/saintego/nostr-post/issues/119)), venue and calendar pages ([nostr-post #76](https://github.com/saintego/nostr-post/issues/76), [nostr-post #82](https://github.com/saintego/nostr-post/issues/82)), private list items ([nostr-post #34](https://github.com/saintego/nostr-post/issues/34), [nostr-post #35](https://github.com/saintego/nostr-post/issues/35)), the geohash cell ([nostr-post #118](https://github.com/saintego/nostr-post/issues/118)).
-- Needed and now filed: [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327), [nostr-post #328](https://github.com/saintego/nostr-post/issues/328), [nostr-post #329](https://github.com/saintego/nostr-post/issues/329), [nostr-post #330](https://github.com/saintego/nostr-post/issues/330), [nostr-post #331](https://github.com/saintego/nostr-post/issues/331).
+- Done since: [nostr-post #328](https://github.com/saintego/nostr-post/issues/328) (time zone fallback), [#329](https://github.com/saintego/nostr-post/issues/329) (long-form articles), [#330](https://github.com/saintego/nostr-post/issues/330) (source attribution). Still open: [#326](https://github.com/saintego/nostr-post/issues/326), [#327](https://github.com/saintego/nostr-post/issues/327), [#331](https://github.com/saintego/nostr-post/issues/331).
 
 ## Build order
 
