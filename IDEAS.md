@@ -4,6 +4,8 @@ Notes from the first brainstorm (November 2026). Nothing here is final.
 
 ## Vision
 
+Issues: [#31](https://github.com/saintego/zinespore/issues/31), [#1](https://github.com/saintego/zinespore/issues/1), [#27](https://github.com/saintego/zinespore/issues/27)
+
 An underground zine for the gig scene, running on Nostr through the nostr-post library. It has two audiences:
 
 - **Readers and bands:** a gig calendar, band and album wikis, reviews and reports, all in a zine look.
@@ -26,6 +28,8 @@ Related: "Multilanguage", "Deploy your own (nsite)", "Filtering scene content".
 
 ## Name
 
+Issues: [#17](https://github.com/saintego/zinespore/issues/17)
+
 - Working name: **ZineSpore** (earlier ideas: decentraZine, spreadZine, SporeZine).
 - Avoid crypto or "decentralized" wording in the public brand. Much of the punk and metal audience distrusts it.
 - A spore is a small piece that travels and grows somewhere new, which fits relay replication and venue embeds. Every post or event can be "a spore".
@@ -33,10 +37,14 @@ Related: "Multilanguage", "Deploy your own (nsite)", "Filtering scene content".
 
 ## Hosting
 
+Issues: [#15](https://github.com/saintego/zinespore/issues/15), [#1](https://github.com/saintego/zinespore/issues/1)
+
 - Primary: an **nsite** (static site served over Nostr/Blossom).
 - Mirror on a normal domain for discovery and for people without nsite gateways.
 
 ## Content
+
+Issues: [#1](https://github.com/saintego/zinespore/issues/1), [#6](https://github.com/saintego/zinespore/issues/6), [#32](https://github.com/saintego/zinespore/issues/32), [#19](https://github.com/saintego/zinespore/issues/19), [#7](https://github.com/saintego/zinespore/issues/7), [#8](https://github.com/saintego/zinespore/issues/8)
 
 | Area | Notes |
 |---|---|
@@ -57,6 +65,8 @@ Related: "Multilanguage", "Deploy your own (nsite)", "Filtering scene content".
 
 ## Themes
 
+Issues: [#2](https://github.com/saintego/zinespore/issues/2), [#26](https://github.com/saintego/zinespore/issues/26)
+
 All three run on the same theme tokens (fonts, palette, image filters) exposed as CSS variables.
 
 1. **Zine (default):** typewriter text, black and white, grayscale images.
@@ -66,6 +76,8 @@ All three run on the same theme tokens (fonts, palette, image filters) exposed a
 Venues get their own theme on the same token system.
 
 ## Venue embed
+
+Issues: [#3](https://github.com/saintego/zinespore/issues/3), [#4](https://github.com/saintego/zinespore/issues/4), [#33](https://github.com/saintego/zinespore/issues/33)
 
 - nostr-post already uses web components, so the embed is a thin wrapper.
 - One script tag plus a custom element, e.g. `<zs-venue-calendar npub="…" theme="…" view="month">`.
@@ -80,6 +92,8 @@ Venues get their own theme on the same token system.
 - Venue profile: address, capacity, map. The nostr-post roadmap already plans moving venue code.
 
 ## Data intake
+
+Issues: [#13](https://github.com/saintego/zinespore/issues/13), [#20](https://github.com/saintego/zinespore/issues/20), [#9](https://github.com/saintego/zinespore/issues/9)
 
 Several ways to feed content in, side by side:
 
@@ -101,6 +115,8 @@ This fills album pages with reviews while respecting copyright and sending reade
 
 ## Travel mode (switching focus)
 
+Issues: [#29](https://github.com/saintego/zinespore/issues/29); [nostr-post #118](https://github.com/saintego/nostr-post/issues/118)
+
 A reader has a home scene and can switch focus to another place, e.g. "Berlin, Nov 20-24", to see what's on there.
 
 - **Just a filter:** the data is global, so this only changes which events, bands, venues and reviews are shown. Stored on the device.
@@ -110,6 +126,8 @@ A reader has a home scene and can switch focus to another place, e.g. "Berlin, N
 - **Needs from nostr-post:** a city is currently one 4-character geohash cell (#118), so gigs just across a cell edge are missed. Fix before relying on it.
 
 ## Chat (opt-in, later)
+
+Issues: [#30](https://github.com/saintego/zinespore/issues/30); [nostr-post #294](https://github.com/saintego/nostr-post/issues/294), [nostr-post #299](https://github.com/saintego/nostr-post/issues/299), [nostr-post #319](https://github.com/saintego/nostr-post/issues/319)
 
 Group chat is planned in nostr-post (a separate package, issues #294-#306). It could be useful here, but it could easily become noise, so it starts small and optional.
 
@@ -130,6 +148,8 @@ Group chat is planned in nostr-post (a separate package, issues #294-#306). It c
 - **Decision:** build it only after the pilot venues ask for it.
 
 ## Personal lists and suggestions
+
+Issues: [#10](https://github.com/saintego/zinespore/issues/10), [#11](https://github.com/saintego/zinespore/issues/11); [nostr-post #34](https://github.com/saintego/nostr-post/issues/34), [nostr-post #35](https://github.com/saintego/nostr-post/issues/35), [nostr-post #331](https://github.com/saintego/nostr-post/issues/331)
 
 Each reader keeps their own lists, and the site suggests gigs and music from them.
 
@@ -170,6 +190,8 @@ Genre tags are messy. Imported events carry free-form tags, e.g. `post-metal`, `
 
 ## Music service integrations
 
+Issues: [#12](https://github.com/saintego/zinespore/issues/12)
+
 Goal: the site is useful even while Nostr content is empty, and readers can bring their listening taste in from services they already use. Everything is optional. Nothing needs an account.
 
 ### Principles
@@ -207,6 +229,8 @@ Goal: the site is useful even while Nostr content is empty, and readers can brin
 - Check each service's current terms before shipping, since Spotify changed its rules twice in two years.
 
 ## Multilanguage
+
+Issues: [#14](https://github.com/saintego/zinespore/issues/14), [#35](https://github.com/saintego/zinespore/issues/35), [#36](https://github.com/saintego/zinespore/issues/36); [nostr-post #266](https://github.com/saintego/nostr-post/issues/266)
 
 Goal: translations for articles, reviews and venue descriptions, without paying for a translation API. Should live in nostr-post so every app on it gets it.
 
@@ -265,6 +289,8 @@ Separate from content. Key/value JSON catalogs in the repo, one file per languag
 
 ## Deploy your own (nsite)
 
+Issues: [#15](https://github.com/saintego/zinespore/issues/15), [#24](https://github.com/saintego/zinespore/issues/24), [#31](https://github.com/saintego/zinespore/issues/31)
+
 Anyone can run their own ZineSpore: a venue, a collective, a city scene. Each one is a separate nsite on the same data.
 
 - **Template repo / fork:** one config file holds the instance settings: name, theme, default language, relays, calendar and publisher allowlist, which venues to feature.
@@ -274,6 +300,8 @@ Anyone can run their own ZineSpore: a venue, a collective, a city scene. Each on
 - **Doubles as the venue story:** a venue can choose the embed (see Venue embed) or a full site of its own.
 
 ## About / manifesto page
+
+Issues: [#16](https://github.com/saintego/zinespore/issues/16)
 
 A page that explains why it is built this way, in zine language and not tech language. It also helps sell it to bands and venues who don't care about protocols.
 
@@ -295,6 +323,8 @@ Look and format:
 - Also a "How to join" page: get a key, back it up, what happens if you lose it, how a band claims its page.
 
 ## Seeding with public data
+
+Issues: [#13](https://github.com/saintego/zinespore/issues/13), [#22](https://github.com/saintego/zinespore/issues/22), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #122](https://github.com/saintego/nostr-post/issues/122), [nostr-post #330](https://github.com/saintego/nostr-post/issues/330)
 
 Importing public gig listings makes the site look full from day one.
 
@@ -327,6 +357,8 @@ Our importer should: set `start_tzid`, add a source tag, de-duplicate tags, buil
 
 ## Filtering scene content from the rest of Nostr
 
+Issues: [#5](https://github.com/saintego/zinespore/issues/5), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327)
+
 Start from trusted sources and show only those. From strongest to weakest:
 
 1. **Curated calendars:** show events listed in venue or curator calendars (kind 31924).
@@ -350,6 +382,8 @@ Besides trusted sources, anyone can opt in by adding a hashtag, e.g. `#zinespore
 - **Convention:** lowercase tags, matched case-insensitively. Document the official tag on the "How to join" page.
 
 ## Fixes for nostr-post `examples/gigs`
+
+Issues: [nostr-post #328](https://github.com/saintego/nostr-post/issues/328), [nostr-post #263](https://github.com/saintego/nostr-post/issues/263), [nostr-post #330](https://github.com/saintego/nostr-post/issues/330) (time zone fallback, raw-data panel, source attribution)
 
 - **Timezone:** show times in the venue's timezone from `start_tzid`, with an optional "your time" label. Fall back to the city in `location` when the tag is missing.
 - **Raw-data panel:** author npub, kind, `d` tag, `naddr` (copyable), relays found on, all tags, raw JSON, signature. (Prototype already exists.)
@@ -378,27 +412,14 @@ Sites to look at for features, tone and look:
 
 Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine look are what make the difference.
 
-## Before building on nostr-post PR #15
+## Status of nostr-post prerequisites
 
-- The PR is stacked on #14, not main. Merge the stack first.
-- `askClaude` is untested against the real API.
-- `build:pages` is not verified end to end.
-- No reviews yet.
+Checked November 11, 2026.
 
-## Suggested order
+- PR #15 (calendar events) is merged, so the calendar, RSVP, `.ics` and event time zone display are done.
+- Still open and relevant: `askClaude` untested against the real API ([nostr-post #119](https://github.com/saintego/nostr-post/issues/119)), venue and calendar pages ([nostr-post #76](https://github.com/saintego/nostr-post/issues/76), [nostr-post #82](https://github.com/saintego/nostr-post/issues/82)), private list items ([nostr-post #34](https://github.com/saintego/nostr-post/issues/34), [nostr-post #35](https://github.com/saintego/nostr-post/issues/35)), the geohash cell ([nostr-post #118](https://github.com/saintego/nostr-post/issues/118)).
+- Needed and now filed: [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327), [nostr-post #328](https://github.com/saintego/nostr-post/issues/328), [nostr-post #329](https://github.com/saintego/nostr-post/issues/329), [nostr-post #330](https://github.com/saintego/nostr-post/issues/330), [nostr-post #331](https://github.com/saintego/nostr-post/issues/331).
 
-1. Merge the nostr-post stack.
-2. Fix timezone display and finish the raw-data panel in `examples/gigs`.
-3. Build the three themes on the gigs example.
-4. Expose it as the venue-calendar web component.
-5. Importer for Gancio feeds.
-6. Poster package.
-7. Reviews, reports, wiki views, long articles.
-8. RSS intake, AI sniffing and external review cards.
-9. Multilanguage: UI string catalogs first, then translation events and the on-device translate button, then localized venue fields.
-10. Style taxonomy, personal lists and on-device suggestions (can start earlier, after the wiki views).
-11. Music service integrations: MusicBrainz stub pages first, then Last.fm/ListenBrainz and file imports, with keys synced through evolustr.
-12. nsite deploy template and the instance config file.
-13. About / manifesto page and "How to join", in all themes.
-14. Travel mode (after personal lists and the geohash fix).
-15. Opt-in chat, only if the pilot venues ask for it.
+## Build order
+
+Tracked in [issue #37](https://github.com/saintego/zinespore/issues/37). Don't keep a separate order here.
