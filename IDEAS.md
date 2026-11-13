@@ -11,6 +11,19 @@ An underground zine for the gig scene, running on Nostr through the nostr-post l
 
 It is also a real-world test of nostr-post's theming and plugin system.
 
+### Local communities, global information
+
+- **Build locally:** a spore is a local community: a city scene, a venue, a collective, a label. It has its own instance or view, look, language, editors and curated calendars.
+- **Share globally:** everything published in a spore is ordinary Nostr data, so every other spore and Nostr client can see it. Nothing is trapped in one site.
+- **Examples:**
+  - A gig created in a Prague spore appears in the Berlin spore when a Berlin fan watches the touring band.
+  - An album review written in Czech gets an English or German translation (by a person, or a corrected machine draft) and is read in other countries.
+  - A band's wiki page is edited by fans in several cities and shown everywhere.
+- **Local decides what to show, not what exists:** each spore filters and curates (trusted calendars, scene tags, styles) without owning or hiding the data from others.
+- **Why it matters:** small scenes get global reach without a big platform in between, and touring bands are found by scenes they've never played.
+
+Related: "Multilanguage", "Deploy your own (nsite)", "Filtering scene content".
+
 ## Name
 
 - Working name: **ZineSpore** (earlier ideas: decentraZine, spreadZine, SporeZine).
