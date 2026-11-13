@@ -22,6 +22,7 @@ Guidance for AI agents and humans working in this repo. Claude Code reads it thr
 
 - **nostr-post** gets what is generic and reusable: list features, mute handling, article manifests, time zone handling, translation data model.
 - **ZineSpore** gets what is scene-specific: gig, album and review manifests, posters, style taxonomy, music service integrations, themes, and configuration.
+- A view that could be generic but is built for the scene (the venue map, filter links) stays in ZineSpore. Move it to nostr-post only when a second app needs it; nostr-post keeps the data side (venue hub, geohash).
 - **Importer / cron** is a separate repo (nostr-post #122), not part of the app.
 - Before opening a nostr-post issue, search its open and closed issues for a duplicate, and show the draft to the user for approval first.
 - Link both ways: the ZineSpore issue names `Depends on nostr-post: …`, and the nostr-post issue ends with `Needed by saintego/zinespore#N`.

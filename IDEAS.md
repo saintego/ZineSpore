@@ -115,7 +115,7 @@ This fills album pages with reviews while respecting copyright and sending reade
 
 ## Travel mode (switching focus)
 
-Issues: [#29](https://github.com/saintego/zinespore/issues/29); [nostr-post #118](https://github.com/saintego/nostr-post/issues/118)
+Issues: [#41](https://github.com/saintego/zinespore/issues/41), [#29](https://github.com/saintego/zinespore/issues/29); [nostr-post #118](https://github.com/saintego/nostr-post/issues/118)
 
 A reader has a home scene and can switch focus to another place, e.g. "Berlin, Nov 20-24", to see what's on there.
 
@@ -357,7 +357,7 @@ Our importer should: set `start_tzid`, add a source tag, de-duplicate tags, buil
 
 ## Filtering scene content from the rest of Nostr
 
-Issues: [#5](https://github.com/saintego/zinespore/issues/5), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327)
+Issues: [#41](https://github.com/saintego/zinespore/issues/41), [#5](https://github.com/saintego/zinespore/issues/5), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327)
 
 Start from trusted sources and show only those. From strongest to weakest:
 
@@ -369,6 +369,10 @@ Start from trusted sources and show only those. From strongest to weakest:
 6. **Reports:** respect NIP-56 reports and mute lists.
 
 Start with 1 and 2. Add web of trust once the scene is big enough.
+
+### Shareable filter links
+
+Every filter (city, venue, style, band, date range, view) is a link that can be shared, subscribed to as `.ics` or RSS, and saved as a view. nostr-post's gigs example already keeps city, genre and view in the page link. Details in [#41](https://github.com/saintego/zinespore/issues/41).
 
 ### Hashtags as the open door
 
@@ -397,6 +401,7 @@ A map of venues and scene places, with extendable layers, modelled on the worldt
 
 - **What worldtrip.guide is:** a travel site with curated maps (specialty coffee, craft beer, absinthe, subculture venues and more). Its subculture map covers underground music venues, art galleries and alternative cultural spaces, with a guide per city (`?s=<city>`). Its page doesn't say how the data is stored, who can contribute, the licence, or whether there is an export or embed. The page preloads tiles from OpenFreeMap, which suggests those tiles, unconfirmed. To check before relying on it.
 - **Already in nostr-post:** the venue hub (venues as wiki entities with OSM IDs and `g` geohash tags, OSM search in the picker). `plugin-geo` handles place input; I found no map view.
+- **Where it lives:** the map view is built in ZineSpore, not in nostr-post. nostr-post keeps the data side (venue hub, geohash search).
 - **Idea:** the map reads venue pages from Nostr. Layers (rehearsal rooms, record shops, festivals and so on) are Nostr lists that a spore declares in its config. No API keys, open tiles.
 
 ## Venue social sources
