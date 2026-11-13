@@ -149,7 +149,7 @@ Group chat is planned in nostr-post (a separate package, issues #294-#306). It c
 
 ## Personal lists and suggestions
 
-Issues: [#10](https://github.com/saintego/zinespore/issues/10), [#11](https://github.com/saintego/zinespore/issues/11); [nostr-post #34](https://github.com/saintego/nostr-post/issues/34), [nostr-post #35](https://github.com/saintego/nostr-post/issues/35), [nostr-post #331](https://github.com/saintego/nostr-post/issues/331)
+Issues: [#42](https://github.com/saintego/zinespore/issues/42), [#10](https://github.com/saintego/zinespore/issues/10), [#11](https://github.com/saintego/zinespore/issues/11); [nostr-post #34](https://github.com/saintego/nostr-post/issues/34), [nostr-post #35](https://github.com/saintego/nostr-post/issues/35), [nostr-post #331](https://github.com/saintego/nostr-post/issues/331)
 
 Each reader keeps their own lists, and the site suggests gigs and music from them.
 
@@ -357,7 +357,7 @@ Our importer should: set `start_tzid`, add a source tag, de-duplicate tags, buil
 
 ## Filtering scene content from the rest of Nostr
 
-Issues: [#41](https://github.com/saintego/zinespore/issues/41), [#5](https://github.com/saintego/zinespore/issues/5), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327)
+Issues: [#42](https://github.com/saintego/zinespore/issues/42), [#41](https://github.com/saintego/zinespore/issues/41), [#5](https://github.com/saintego/zinespore/issues/5), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #326](https://github.com/saintego/nostr-post/issues/326), [nostr-post #327](https://github.com/saintego/nostr-post/issues/327)
 
 Start from trusted sources and show only those. From strongest to weakest:
 
@@ -373,6 +373,10 @@ Start with 1 and 2. Add web of trust once the scene is big enough.
 ### Shareable filter links
 
 Every filter (city, venue, style, band, date range, view) is a link that can be shared, subscribed to as `.ics` or RSS, and saved as a view. nostr-post's gigs example already keeps city, genre and view in the page link. Details in [#41](https://github.com/saintego/zinespore/issues/41).
+
+### Live calendar feeds
+
+A calendar you subscribe to once (Google, Apple, Outlook) keeps itself up to date: your "Going" and "Maybe" events, a saved view, a venue's calendar. Importing a downloaded `.ics` is only a one-time copy. The catch is a stable URL: a static nsite can't serve fresh data, and I believe Blossom file URLs change with the content, so this needs a stateless feed gateway or cron-generated static files. RSVPs are public Nostr events, so personal feeds are opt-in. Details in [#42](https://github.com/saintego/zinespore/issues/42).
 
 ### Hashtags as the open door
 
