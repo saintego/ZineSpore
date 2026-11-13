@@ -52,6 +52,8 @@ Related: "Multilanguage", "Deploy your own (nsite)", "Filtering scene content".
 | Media | `plugin-embed`: YouTube, Spotify, SoundCloud, Vimeo, Bandcamp, click to load. |
 | Poster creator | New package. Pulls band logos from wiki pages, fills a template with event data, exports PNG/SVG. |
 | Languages | Translations of UI, articles, reviews and venue texts. See "Multilanguage". |
+| Travel mode | Switch focus to another city or date range and see what's on there. See "Travel mode". |
+| Chat | Optional, opt-in private group chat, also a path off WhatsApp and Telegram groups. Later. See "Chat". |
 
 ## Themes
 
@@ -96,6 +98,36 @@ For reviews published elsewhere, don't copy the text. Publish a card with:
 - Links to the album or band wiki page.
 
 This fills album pages with reviews while respecting copyright and sending readers to the original.
+
+## Travel mode (switching focus)
+
+A reader has a home scene and can switch focus to another place, e.g. "Berlin, Nov 20-24", to see what's on there.
+
+- **Just a filter:** the data is global, so this only changes which events, bands, venues and reviews are shown. Stored on the device.
+- **Focus places:** home plus any number of temporary places, with an optional date range. Pick by city, map or geohash.
+- **Touring angle:** combined with watched bands, show "your bands playing where you're travelling".
+- **Unknown scene:** a new city has no curated calendars or allowlist the reader knows. Fall back to geohash plus the `#zinespore` hashtag, and mark that content as less verified.
+- **Needs from nostr-post:** a city is currently one 4-character geohash cell (#118), so gigs just across a cell edge are missed. Fix before relying on it.
+
+## Chat (opt-in, later)
+
+Group chat is planned in nostr-post (a separate package, issues #294-#306). It could be useful here, but it could easily become noise, so it starts small and optional.
+
+### Where it helps
+
+- **Around one gig:** rides, who's going, where to meet.
+- **A crew, band or small scene:** a private group.
+- **Moving communities off WhatsApp and Telegram:** many scenes organize in those groups, with weak privacy: phone numbers are shared, the company holds metadata, and groups die when the account owner leaves. Private end-to-end encrypted chat on Nostr (WhiteNoise/Marmot, NIP-17) is a better home. ZineSpore can offer a "move your group here" path with an invite link on the scene or venue page.
+
+### Rules
+
+- **Opt-in and off by default:** no chat appears until a reader or scene turns it on.
+- **No noise:** no unread badges and no notifications unless asked. Calm design, one chat per event or scene.
+- **Members:** private chats are invite-only. Block unknown people by default: only invited members or people the reader already follows can message them; everyone else lands in a "requests" box and can be blocked.
+- **Public channels:** later, maybe, and only if a scene wants one and has moderators.
+- **Security:** the secure private mode is the default, and a downgrade has to be explicit. This follows nostr-post's chat design (#299).
+- **Honest about limits:** a group's members can still copy or share what's said. Encryption protects the content from relays, not from the people in the chat.
+- **Decision:** build it only after the pilot venues ask for it.
 
 ## Personal lists and suggestions
 
@@ -368,3 +400,5 @@ Gig listing alone won't beat Gancio. The wiki, reviews, posters and the zine loo
 11. Music service integrations: MusicBrainz stub pages first, then Last.fm/ListenBrainz and file imports, with keys synced through evolustr.
 12. nsite deploy template and the instance config file.
 13. About / manifesto page and "How to join", in all themes.
+14. Travel mode (after personal lists and the geohash fix).
+15. Opt-in chat, only if the pilot venues ask for it.
