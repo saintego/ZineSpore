@@ -380,7 +380,7 @@ Every filter (city, venue, style, band, date range, view) is a link that can be 
 
 ### Live calendar feeds
 
-A calendar you subscribe to once (Google, Apple, Outlook) keeps itself up to date: your "Going" and "Maybe" events, a saved view, a venue's calendar. Importing a downloaded `.ics` is only a one-time copy. The catch is a stable URL: a static nsite can't serve fresh data, and I believe Blossom file URLs change with the content, so this needs a stateless feed gateway or cron-generated static files. RSVPs are public Nostr events, so personal feeds are opt-in. Details in [#42](https://github.com/saintego/zinespore/issues/42).
+A calendar you subscribe to once (Google, Apple, Outlook) keeps itself up to date: your "Going" and "Maybe" events, a saved view, a venue's calendar. Importing a downloaded `.ics` is only a one-time copy. The catch is a stable URL: a static nsite can't serve fresh data, and I believe Blossom file URLs change with the content, so this needs a stateless feed gateway or cron-generated static files. RSVPs are public Nostr events, so personal feeds are opt-in. Details in [#42](https://github.com/saintego/zinespore/issues/42). The `.ics` export itself needs a change counter, status and RSVP mapping: [nostr-post #372](https://github.com/saintego/nostr-post/issues/372).
 
 ### Hashtags as the open door
 
