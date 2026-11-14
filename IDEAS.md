@@ -324,7 +324,7 @@ Look and format:
 
 ## Seeding with public data
 
-Issues: [#13](https://github.com/saintego/zinespore/issues/13), [#22](https://github.com/saintego/zinespore/issues/22), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #122](https://github.com/saintego/nostr-post/issues/122), [nostr-post #330](https://github.com/saintego/nostr-post/issues/330)
+Issues: [#43](https://github.com/saintego/zinespore/issues/43), [#13](https://github.com/saintego/zinespore/issues/13), [#22](https://github.com/saintego/zinespore/issues/22), [#34](https://github.com/saintego/zinespore/issues/34); [nostr-post #122](https://github.com/saintego/nostr-post/issues/122), [nostr-post #330](https://github.com/saintego/nostr-post/issues/330)
 
 Importing public gig listings makes the site look full from day one.
 
@@ -334,6 +334,10 @@ Importing public gig listings makes the site look full from day one.
   - Easy opt-out for promoters and venues.
   - Mark imported events clearly so real organizers can claim them.
   - Consider asking instance admins first.
+
+### Review pool: importers propose, local people decide
+
+Importers don't publish; they prepare candidates (an unsigned event plus its source data). Local auditors who know the scene review the candidates for their area and sign the right ones, or reject them. That puts the final say with people, spreads the work by place, and keeps bot output out of the feeds until someone vouches for it. Open decisions: whether the auditor signs as author or endorses a labelled "unverified" event, and where the pool lives (shared Evolu, encrypted on Nostr, or public candidate events). Details in [#43](https://github.com/saintego/zinespore/issues/43).
 
 ### Existing bridge found
 
